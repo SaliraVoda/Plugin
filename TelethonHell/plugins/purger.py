@@ -45,10 +45,9 @@ async def fastpurger(event):
                     msg = []
             if msg:
                 await event.client.delete_messages(event.chat_id, msg)
-        done = await event.client.send_message(event.chat_id, f"**Self Purge Completed!!** Purged `{str(count)}` messages.")
-        await event.client.send_message(Config.LOGGER_ID, f"#PURGE \nSelf Purged `{str(count)}` messages.")
+        done = await event.client.send_message(Config.LOGGER_ID, f"#PURGE \nSelf Purged `{str(count)}` messages.")
         await sleep(1)
-        await done.delete()
+        await done()
 
     elif what == "-user":
         try:
