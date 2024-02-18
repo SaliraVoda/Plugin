@@ -9,7 +9,7 @@ async def _(hellevent):
         return
     in_chat = hellevent.chat_id
     reply_message = await hellevent.get_reply_message()
-    chat = "Sangmatainfo_bot"
+    chat = "@SangMata_beta_bot"
     victim = reply_message.sender.id
     if reply_message.sender.bot:
         await eod(hellevent, "Need actual users. Not Bots")
@@ -18,9 +18,10 @@ async def _(hellevent):
     success = False
     async with hellevent.client.conversation(chat) as conv:
         try:
-            first = await conv.send_message(f"/search_id {victim}")
+            first = await conv.send_message(f"history {victim}")
             try:
                 await hell.delete()
+                await first.delete()
                 response1 = await conv.get_response()
                 if response1 and response1.text.startswith("🔗"):
                     success = False
