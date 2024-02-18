@@ -47,7 +47,7 @@ async def fastpurger(event):
                 await event.client.delete_messages(event.chat_id, msg)
         done = await event.client.send_message(event.chat_id, f"**Self Purge Completed!!** Purged `{str(count)}` messages.")
         await event.client.send_message(Config.LOGGER_ID, f"#PURGE \nSelf Purged `{str(count)}` messages.")
-        await sleep(5)
+        await sleep(1)
         await done.delete()
 
     elif what == "-user":
@@ -81,7 +81,7 @@ async def fastpurger(event):
         done = await event.client.send_message(event.chat_id, f"**Purge Completed!!** Purged `{str(count)}` messages of [{user.first_name}](tg://user?id={user.id})")
 
         await event.client.send_message(Config.LOGGER_ID, f"#PURGE \nPurged `{str(count)}` messages of [{user.first_name}]({user.id})")
-        await sleep(5)
+        await sleep(1)
         await done.delete()
 
     else:
@@ -98,7 +98,7 @@ async def fastpurger(event):
             await event.client.delete_messages(event.chat_id, msgs)
         done = await event.client.send_message(event.chat_id, f"**Purge Completed!** \nPurged `{str(count)}` messages.")
         await event.client.send_message(Config.LOGGER_ID, f"#PURGE\n\nPurged `{str(count)}` messages.")
-        await sleep(5)
+        await sleep(1)
         await done.delete()
 
 
