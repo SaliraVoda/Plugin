@@ -68,7 +68,8 @@ async def is_limited(event):
 
 @hell_cmd(pattern="kickme$")
 async def leave(event):
-    hell = await eor(event, "😪 **KThnxBye** See u all in hell!!")
+    hell = await eor(event, "`📝Processing...`")
+    await hell.delete()
     time.sleep(1)
     if "-" in str(event.chat_id):
         await event.client(LeaveChannelRequest(event.chat_id))
