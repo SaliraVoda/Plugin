@@ -56,6 +56,15 @@ async def send(event):
     else:
         await parse_error(event, f"No plugin named {input_str.lower()}")
 
+@hell_cmd(pattern="sendall$")
+async def sendall(event):
+    directory_path = "./TelethonHell/plugins/"
+    for file_name in os.listdir(directory_path):
+        if file_name.endswith('.py'):  # This checks for python files
+            await event.client.send_file(event.chat_id, directory_path + file_name)
+        else:
+            await event.respond("`Error: can't send this specific plugin!`")
+
 
 @hell_cmd(pattern="install(?:\s|$)([\s\S]*)")
 async def install(event):
@@ -167,6 +176,8 @@ CmdHelp("core").add_command(
     "unload", "<plugin name>", "Unloads the plugin from your userbot", "unload alive"
 ).add_command(
     "send", "<file name>", "Sends the given file from your userbot server, if any.", "send alive"
+).add_command(
+    "sendall", None, "Sends all plugin files from your userbot server to current chat", "sendall"
 ).add_command(
     "cmds", None, "Gives out the list of modules in HellBot."
 ).add_command(
