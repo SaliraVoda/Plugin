@@ -742,7 +742,7 @@ async def do_pm_permit_action(chat_ids, event, client):
             return
         except:
             pass
-    tap = await event.client.inline_query(Config.BOT_USERNAME, "pm_warn")
+      await event.client.send_message(event.chat_id, pm_warn, parse_mode=None, link_preview=False)
     hell = await tap[0].click(event.chat_id)
     client.PM_WARNS[chat_ids] += 1
     if chat_ids in client.PREV_REPLY_MESSAGE:
