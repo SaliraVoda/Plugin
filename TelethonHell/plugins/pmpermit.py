@@ -704,7 +704,7 @@ async def do_pm_permit_action(chat_ids, event, client):
             pass
 
     thee_message = "🌱𝐄𝐱𝐭𝐞𝐧𝐝𝐞𝐝 𝐏𝐌 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲\n\n This is an automated message and you are requested not to spam here, else you'll be blocked automatically after maximum 3 pm spams!!"     
-    PIC = "https://te.legra.ph/file/ea9e11f7c9db21c1b8d5e.mp4"
+    PIC = "https://te.legra.ph/file/f667c4c121294c863e068.jpg"
     if chat_ids in client.PREV_REPLY_MESSAGE:
         await client.PREV_REPLY_MESSAGE[chat_ids].delete()
     tap = await event.client.send_file(
