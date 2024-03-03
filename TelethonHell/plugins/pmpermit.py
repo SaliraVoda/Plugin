@@ -691,7 +691,7 @@ async def do_pm_permit_action(chat_ids, event, client):
         if chat_ids in client.PREV_REPLY_MESSAGE:
             await client.PREV_REPLY_MESSAGE[chat_ids].delete()
         client.PREV_REPLY_MESSAGE[chat_ids] = r
-        the_message = f"#BLOCK \n\n[User](tg://user?id={chat_ids}): `{chat_ids}` \n__Message Counts:__ `{client.PM_WARNS[chat_ids]}`\n"
+        the_message = f"#BLOCK \n\nUser: `{chat_ids}` \n__Message Counts:__ `{client.PM_WARNS[chat_ids]}`\n"
         try:
             await event.client.send_message(
                 Config.LOGGER_ID,
@@ -704,6 +704,8 @@ async def do_pm_permit_action(chat_ids, event, client):
             pass
     thee_message = "U cant pm lol {hell_mention}"     
     PIC = "https://te.legra.ph/file/ea9e11f7c9db21c1b8d5e.mp4"
+    if chat_ids in client.PREV_REPLY_MESSAGE:
+        await client.PREV_REPLY_MESSAGE[chat_ids].delete()
     tap = await event.client.send_file(
         event.chat_id,
         file=PIC,
@@ -711,9 +713,7 @@ async def do_pm_permit_action(chat_ids, event, client):
         parse_mode="HTML",
     )
     client.PM_WARNS[chat_ids] += 1
-    if chat_ids in client.PREV_REPLY_MESSAGE:
-      await client.PREV_REPLY_MESSAGE[chat_ids].delete()
-      client.PREV_REPLY_MESSAGE[chat_ids] = r
+    client.PREV_REPLY_MESSAGE[chat_ids] = tap
 
 
 if str(Config.INSTANT_BLOCK).lower() in enabled_list:
