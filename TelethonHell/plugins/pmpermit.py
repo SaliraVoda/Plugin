@@ -2,6 +2,7 @@ import asyncio
 import io
 
 from telethon import functions
+from telethon import utils
 from telethon.events.newmessage import NewMessage
 from telethon.tl.functions.users import GetFullUserRequest
 from TelethonHell.DB import pmpermit_sql as pm_sql
@@ -703,20 +704,24 @@ async def do_pm_permit_action(chat_ids, event, client):
         except:
             pass
 
-    ForGo10God, _, hell_mention = await client_id(event)
-    CSTM_PMP = gvarstat("CUSTOM_PMPERMIT") or None
-    thee_message = f"🌱 𝐄𝐱𝐭𝐞𝐧𝐝𝐞𝐝 𝐏𝐌 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲\n\n This is an automated message on behalf of my master {hell_mention} and you are requested not to spam here, else you'll be blocked automatically after maximum 3 pm spams!!\n Kindly wait until my master approves you to pm."     
-    PIC = "https://te.legra.ph/file/f667c4c121294c863e068.jpg"
-    if chat_ids in client.PREV_REPLY_MESSAGE:
-        await client.PREV_REPLY_MESSAGE[chat_ids].delete()
-    tap = await event.client.send_file(
-        event.chat_id,
-        file=PIC,
-        caption=thee_message,
-        parse_mode="HTML",
-    )
-    client.PM_WARNS[chat_ids] += 1
-    client.PREV_REPLY_MESSAGE[chat_ids] = tap
+# ...
+
+ForGo10God, _, _ = await client_id(event)
+hell_mention = utils.get_display_name(await event.client.get_me())
+CSTM_PMP = gvarstat("CUSTOM_PMPERMIT") or None
+thee_message = f"🌱 𝐄𝐱𝐭𝐞𝐧𝐝𝐞𝐝 𝐏𝐌 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲\n\n This is an automated message on behalf of my master {hell_mention} and you are requested not to spam here, else you'll be blocked automatically after maximum 3 pm spams!!\n Kindly wait until my master approves you to pm."     
+PIC = "https://te.legra.ph/file/f667c4c121294c863e068.jpg"
+if chat_ids in client.PREV_REPLY_MESSAGE:
+    await client.PREV_REPLY_MESSAGE[chat_ids].delete()
+tap = await event.client.send_file(
+    event.chat_id,
+    file=PIC,
+    caption=thee_message,
+    parse_mode="HTML",
+)
+client.PM_WARNS[chat_ids] += 1
+client.PREV_REPLY_MESSAGE[chat_ids] = tap
+
 
 
 if str(Config.INSTANT_BLOCK).lower() in enabled_list:
