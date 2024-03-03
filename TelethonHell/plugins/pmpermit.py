@@ -702,7 +702,7 @@ async def do_pm_permit_action(chat_ids, event, client):
             return
         except:
             pass
-    thee_message = f"U cant pm lol {hell_mention}"    
+    thee_message = f"🔥 𝙃𝙚𝙡𝙡𝘽𝙤𝙩 𝙋𝙈 𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮 🔥\n\nHello!! This is an automated message on behalf of {hell_mention}."
     PIC = "https://te.legra.ph/file/ea9e11f7c9db21c1b8d5e.mp4"
     if chat_ids in client.PREV_REPLY_MESSAGE:
         await client.PREV_REPLY_MESSAGE[chat_ids].delete()
