@@ -8,46 +8,6 @@ from TelethonHell.DB import pmpermit_sql as pm_sql
 from TelethonHell.plugins import *
 
 
-
-pm_warn = """
-            CSTM_PMP = gvarstat("CUSTOM_PMPERMIT") or None
-            HELL_FIRST = f"🔥 𝙃𝙚𝙡𝙡𝘽𝙤𝙩 𝙋𝙈 𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮 🔥\n\nHello!! This is an automated message on behalf of {hell_mention}."
-            if CSTM_PMP:
-                HELL_FIRST += f"\n\n{CSTM_PMP}"
-            a = gvarstat("PMPERMIT_PIC")
-            pic_list = []
-            if a and a == "DISABLE":
-                PIC = None
-            elif a:
-                b = a.split(" ")
-                if len(b) >= 1:
-                    for c in b:
-                        pic_list.append(c)
-                PIC = random.choice(pic_list)
-            else:
-                PIC = "https://te.legra.ph/file/58df4d86400922aa32acd.jpg"
-            if PIC and PIC.endswith((".jpg", ".png")):
-                result = builder.photo(
-                    file=PIC,
-                    text=HELL_FIRST,
-                    link_preview=False,
-                )
-            elif PIC:
-                result = builder.document(
-                    file=PIC,
-                    text=HELL_FIRST,
-                    title="Hellbot PM Permit",
-                    link_preview=False,
-                )
-            else:
-                result = builder.article(
-                    text=HELL_FIRST,
-                    title="Hellbot PM Permit",
-                    link_preview=False,
-                )
-"""
-
-
 # pmpermit objects for all clients
 pm1 = PM_PERMIT()
 pm2 = PM_PERMIT()
@@ -742,7 +702,7 @@ async def do_pm_permit_action(chat_ids, event, client):
             return
         except:
             pass
-      await event.client.send_message(event.chat_id, pm_warn, parse_mode=None, link_preview=False)
+      await event.client.send_file(event.chat_id, pm_warn, parse_mode=None, link_preview=False)
     hell = await tap[0].click(event.chat_id)
     client.PM_WARNS[chat_ids] += 1
     if chat_ids in client.PREV_REPLY_MESSAGE:
