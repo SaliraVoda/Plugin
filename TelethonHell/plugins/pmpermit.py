@@ -703,7 +703,7 @@ async def do_pm_permit_action(chat_ids, event, client):
         except:
             pass
     PIC = "https://te.legra.ph/file/58df4d86400922aa32acd.jpg"
-    msgg = f"🔥 𝙃𝙚𝙡𝙡𝘽𝙤𝙩 𝙋𝙈 𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮 🔥\n\nHello!! This is an automated message on behalf of {hell_mention}."
+    msgg = "🔥 𝙃𝙚𝙡𝙡𝘽𝙤𝙩 𝙋𝙈 𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮 🔥\n\nHello!! This is an automated message on behalf of {hell_mention}."
     tap = await event.client.send_file(
               event.chat_id,
               file=PIC,
