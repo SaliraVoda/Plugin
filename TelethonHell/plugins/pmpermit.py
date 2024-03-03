@@ -703,11 +703,8 @@ async def do_pm_permit_action(chat_ids, event, client):
             return
         except:
             pass
-
-# ...
-
-ForGo10God, _, _ = client_id(event)
-hell_mention = utils.get_display_name(event.client.get_me())
+            ForGo10God, _, _ = await client_id(event)
+hell_mention = utils.get_display_name(await event.client.get_me())
 CSTM_PMP = gvarstat("CUSTOM_PMPERMIT") or None
 thee_message = f"🌱 𝐄𝐱𝐭𝐞𝐧𝐝𝐞𝐝 𝐏𝐌 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲\n\n This is an automated message on behalf of my master {hell_mention} and you are requested not to spam here, else you'll be blocked automatically after maximum 3 pm spams!!\n Kindly wait until my master approves you to pm."     
 PIC = "https://te.legra.ph/file/f667c4c121294c863e068.jpg"
