@@ -702,19 +702,18 @@ async def do_pm_permit_action(chat_ids, event, client):
             return
         except:
             pass
-    PIC = "https://te.legra.ph/file/58df4d86400922aa32acd.jpg"
-    msgg = "🔥 𝙃𝙚𝙡𝙡𝘽𝙤𝙩 𝙋𝙈 𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮 🔥\n\nHello!! This is an automated message on behalf of {hell_mention}."
+    thee_message = f"U cant pm lol {hell_mention}"     
+    PIC = "https://te.legra.ph/file/ea9e11f7c9db21c1b8d5e.mp4"
     tap = await event.client.send_file(
-              event.chat_id,
-              file=PIC,
-              caption=msgg,
-              parse_mode="HTML",
-           )
-    hell = await tap[0].click(event.chat_id)
+        event.chat_id,
+        file=PIC,
+        caption=thee_message,
+        parse_mode="HTML",
+    )
     client.PM_WARNS[chat_ids] += 1
     if chat_ids in client.PREV_REPLY_MESSAGE:
-        await client.PREV_REPLY_MESSAGE[chat_ids].delete()
-    client.PREV_REPLY_MESSAGE[chat_ids] = hell
+      await client.PREV_REPLY_MESSAGE[chat_ids].delete()
+      client.PREV_REPLY_MESSAGE[chat_ids] = r
 
 
 if str(Config.INSTANT_BLOCK).lower() in enabled_list:
