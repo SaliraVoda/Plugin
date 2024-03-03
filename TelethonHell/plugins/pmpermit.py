@@ -709,6 +709,7 @@ async def do_pm_permit_action(chat_ids, event, client):
         file=PIC,
         caption=thee_message,
         parse_mode="HTML",
+        reply_to=message_id,
     )
     client.PM_WARNS[chat_ids] += 1
     if chat_ids in client.PREV_REPLY_MESSAGE:
