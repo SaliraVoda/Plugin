@@ -715,8 +715,8 @@ tap = await event.client.send_file(
     caption=thee_message,
     parse_mode="HTML",
 )
-    client.PM_WARNS[chat_ids] += 1
-    client.PREV_REPLY_MESSAGE[chat_ids] = tap
+client.PM_WARNS[chat_ids] += 1
+client.PREV_REPLY_MESSAGE[chat_ids] = tap
 
 
 if str(Config.INSTANT_BLOCK).lower() in enabled_list:
