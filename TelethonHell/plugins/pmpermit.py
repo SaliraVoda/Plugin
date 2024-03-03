@@ -682,7 +682,6 @@ async def allapproved(event):
     else:
         await eor(event, APPROVED_PMs)
 
-
 async def do_pm_permit_action(chat_ids, event, client):
     if chat_ids not in client.PM_WARNS:
         client.PM_WARNS.update({chat_ids: 0})
@@ -692,7 +691,7 @@ async def do_pm_permit_action(chat_ids, event, client):
         if chat_ids in client.PREV_REPLY_MESSAGE:
             await client.PREV_REPLY_MESSAGE[chat_ids].delete()
         client.PREV_REPLY_MESSAGE[chat_ids] = r
-        the_message = f"#BLOCK \n\nUser: `{chat_ids}` \n__Message Counts:__ `{client.PM_WARNS[chat_ids]}`\n"
+        the_message = f"#BLOCK \n\nUser: {chat_ids} \n__Message Counts:__ `{client.PM_WARNS[chat_ids]}`\n"
         try:
             await event.client.send_message(
                 Config.LOGGER_ID,
@@ -703,26 +702,19 @@ async def do_pm_permit_action(chat_ids, event, client):
             return
         except:
             pass
-
-# ...
-
-ForGo10God, _, _ = sync(client_id(event))
-hell_mention = utils.get_display_name(sync(event.client.get_me()))
-CSTM_PMP = gvarstat("CUSTOM_PMPERMIT") or None
-thee_message = f"🌱 𝐄𝐱𝐭𝐞𝐧𝐝𝐞𝐝 𝐏𝐌 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲\n\n This is an automated message on behalf of my master {hell_mention} and you are requested not to spam here, else you'll be blocked automatically after maximum 3 pm spams!!\n Kindly wait until my master approves you to pm."     
-PIC = "https://te.legra.ph/file/f667c4c121294c863e068.jpg"
-if chat_ids in client.PREV_REPLY_MESSAGE:
-    sync(client.PREV_REPLY_MESSAGE[chat_ids].delete())
-tap = sync(event.client.send_file(
-    event.chat_id,
-    file=PIC,
-    caption=thee_message,
-    parse_mode="HTML",
-))
-client.PM_WARNS[chat_ids] += 1
-client.PREV_REPLY_MESSAGE[chat_ids] = tap
-
-
+    thee_message = "U cant pm lol {hell_mention}"     
+    PIC = "https://te.legra.ph/file/ea9e11f7c9db21c1b8d5e.mp4"
+    hell_mention = utils.get_display_name(await event.client.get_me())
+    if chat_ids in client.PREV_REPLY_MESSAGE:
+        await client.PREV_REPLY_MESSAGE[chat_ids].delete()
+    tap = await event.client.send_file(
+        event.chat_id,
+        file=PIC,
+        caption=thee_message,
+        parse_mode="HTML",
+    )
+    client.PM_WARNS[chat_ids] += 1
+    client.PREV_REPLY_MESSAGE[chat_ids] = tap
 
 
 if str(Config.INSTANT_BLOCK).lower() in enabled_list:
