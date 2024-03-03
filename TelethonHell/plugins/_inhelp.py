@@ -148,59 +148,7 @@ if Config.BOT_USERNAME and tbot:
                     link_preview=False,
                     parse_mode="HTML",
                 )
-
-        elif event.query.user_id in auth and query == "pm_warn":
-            CSTM_PMP = gvarstat("CUSTOM_PMPERMIT") or None
-            HELL_FIRST = f"🔥 𝙃𝙚𝙡𝙡𝘽𝙤𝙩 𝙋𝙈 𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮 🔥\n\nHello!! This is an automated message on behalf of {hell_mention}."
-            if CSTM_PMP:
-                HELL_FIRST += f"\n\n{CSTM_PMP}"
-            a = gvarstat("PMPERMIT_PIC")
-            pic_list = []
-            if a and a == "DISABLE":
-                PIC = None
-            elif a:
-                b = a.split(" ")
-                if len(b) >= 1:
-                    for c in b:
-                        pic_list.append(c)
-                PIC = random.choice(pic_list)
-            else:
-                PIC = "https://te.legra.ph/file/58df4d86400922aa32acd.jpg"
-            if PIC and PIC.endswith((".jpg", ".png")):
-                result = builder.photo(
-                    file=PIC,
-                    text=HELL_FIRST,
-                    buttons=[
-                        [Button.inline("📝 Request Approval", data="req")],
-                        [Button.inline("🚫 Block", data="heheboi")],
-                        [Button.inline("❓ Curious", data="pmclick")],
-                    ],
-                    link_preview=False,
-                )
-            elif PIC:
-                result = builder.document(
-                    file=PIC,
-                    text=HELL_FIRST,
-                    title="Hellbot PM Permit",
-                    buttons=[
-                        [Button.inline("📝 Request Approval", data="req")],
-                        [Button.inline("🚫 Block", data="heheboi")],
-                        [Button.inline("❓ Curious", data="pmclick")],
-                    ],
-                    link_preview=False,
-                )
-            else:
-                result = builder.article(
-                    text=HELL_FIRST,
-                    title="Hellbot PM Permit",
-                    buttons=[
-                        [Button.inline("📝 Request Approval", data="req")],
-                        [Button.inline("🚫 Block", data="heheboi")],
-                        [Button.inline("❓ Curious", data="pmclick")],
-                    ],
-                    link_preview=False,
-                )
-
+        
         elif event.query.user_id in auth and query == "repo":
             result = builder.article(
                 title="Repository",
