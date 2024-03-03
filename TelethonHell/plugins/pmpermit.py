@@ -702,7 +702,14 @@ async def do_pm_permit_action(chat_ids, event, client):
             return
         except:
             pass
-      await event.client.send_file(event.chat_id, pm_warn, parse_mode=None, link_preview=False)
+    PIC = "https://te.legra.ph/file/58df4d86400922aa32acd.jpg"
+    msgg = f"🔥 𝙃𝙚𝙡𝙡𝘽𝙤𝙩 𝙋𝙈 𝙎𝙚𝙘𝙪𝙧𝙞𝙩𝙮 🔥\n\nHello!! This is an automated message on behalf of {hell_mention}."
+    tap = await event.client.send_file(
+        event.chat_id,
+        file=PIC,
+        caption=msgg,
+        parse_mode="HTML"
+    )
     hell = await tap[0].click(event.chat_id)
     client.PM_WARNS[chat_ids] += 1
     if chat_ids in client.PREV_REPLY_MESSAGE:
