@@ -702,9 +702,8 @@ async def do_pm_permit_action(chat_ids, event, client):
             return
         except:
             pass
-            hell_mention = utils.get_display_name(await event.client.get_me())
-    thee_message = f"U cant pm lol {hell_mention}"     
-    PIC = "https://te.legra.ph/file/ea9e11f7c9db21c1b8d5e.mp4"
+    thee_message = "<code>👋 Hello, This is an automated message and you are requested not to spam here. Please wait until my Master approves you to pm else you'll be blocked automatically!!</code>"     
+    PIC = "https://te.legra.ph/file/f667c4c121294c863e068.jpg"
     if chat_ids in client.PREV_REPLY_MESSAGE:
         await client.PREV_REPLY_MESSAGE[chat_ids].delete()
     tap = await event.client.send_file(
