@@ -710,10 +710,10 @@ async def do_pm_permit_action(chat_ids, event, client):
         caption=thee_message,
         parse_mode="HTML",
     )
-    client.PM_WARNS[chat_ids] += 1
-    client.PREV_REPLY_MESSAGE[chat_ids] = tap
     if chat_ids in client.PREV_REPLY_MESSAGE:
         await client.PREV_REPLY_MESSAGE[chat_ids].delete()
+    client.PM_WARNS[chat_ids] += 1
+    client.PREV_REPLY_MESSAGE[chat_ids] = tap
 
 
 if str(Config.INSTANT_BLOCK).lower() in enabled_list:
