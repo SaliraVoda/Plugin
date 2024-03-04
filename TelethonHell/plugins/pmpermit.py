@@ -704,8 +704,6 @@ async def do_pm_permit_action(chat_ids, event, client):
             pass
     thee_message = "🔰 𝐄𝐱𝐭𝐞𝐧𝐝𝐞𝐝 𝐏𝐌 𝐒𝐞𝐜𝐮𝐫𝐢𝐭𝐲\n ↠━━━━━━━◆━━━━━━━↞\n\n <code>👋 Hello, This is an automated message and you are requested not to spam here. Please wait until my Master approves you to pm else you'll be blocked automatically!!</code>"     
     PIC = "https://te.legra.ph/file/f667c4c121294c863e068.jpg"
-    if chat_ids in client.PREV_REPLY_MESSAGE:
-        await client.PREV_REPLY_MESSAGE[chat_ids].delete()
     tap = await event.client.send_file(
         event.chat_id,
         file=PIC,
@@ -714,6 +712,8 @@ async def do_pm_permit_action(chat_ids, event, client):
     )
     client.PM_WARNS[chat_ids] += 1
     client.PREV_REPLY_MESSAGE[chat_ids] = tap
+    if chat_ids in client.PREV_REPLY_MESSAGE:
+        await client.PREV_REPLY_MESSAGE[chat_ids].delete()
 
 
 if str(Config.INSTANT_BLOCK).lower() in enabled_list:
